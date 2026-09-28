@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UniPlanner — scarica</title>
+<meta name="description" content="Orario delle lezioni UniBA (ITPS e Informatica) sul telefono Android.">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #ffffff; --ink: #0a0a0a; --ink-2: #4a4a4a; --ink-3: #8a8a8a;
+    --rule: #0a0a0a; --hair: #e4e4e4; --accent: #e01b24; --on-accent: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #050506; --ink: #f2f2f3; --ink-2: #a8a8ae; --ink-3: #6b6b72;
+      --rule: #f2f2f3; --hair: #1f1f23; --accent: #5e6ad2; --on-accent: #ffffff;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--bg); }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 560px; margin: 0 auto; padding: 32px 16px 48px; }
+  header { display: flex; align-items: center; gap: 14px; border-bottom: 3px solid var(--rule); padding-bottom: 18px; }
+  header img { width: 56px; height: 56px; }
+  h1 { margin: 0; font-size: 34px; font-weight: 800; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; }
+  .sub { margin: 6px 0 0; color: var(--ink-2); font-size: 14px; }
+  .dl {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    margin: 28px 0 8px; padding: 18px; background: var(--accent); color: var(--on-accent);
+    font-size: 18px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+  }
+  .dl svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .ver { margin: 0; text-align: center; font-size: 13px; color: var(--ink-3); min-height: 1.5em; }
+  h2 { margin: 36px 0 10px; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+  ol { margin: 0; padding-left: 20px; }
+  li + li { margin-top: 8px; }
+  .note { font-size: 14px; color: var(--ink-2); border-top: 1px solid var(--hair); padding-top: 14px; margin-top: 20px; }
+  .note p { margin: 0 0 8px; }
+  a { color: inherit; }
+  .qr { display: none; }
+  /* da computer: il QR per aprire la pagina sul telefono */
+  @media (min-width: 800px) and (hover: hover) {
+    .qr { display: flex; align-items: center; gap: 18px; margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--hair); }
+    .qr img { width: 150px; height: 150px; background: #fff; padding: 6px; }
+    .qr p { margin: 0; font-size: 14px; color: var(--ink-2); }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="icon.svg" alt="">
+    <div>
+      <h1>UniPlanner</h1>
+      <p class="sub">Orario delle lezioni UniBA (ITPS e Informatica) sul telefono Android.</p>
+    </div>
+  </header>
+
+  <a class="dl" href="https://github.com/LordMarte-A669/uniplanner-releases/releases/latest/download/uniplanner.apk">
+    <svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Scarica
+  </a>
+  <p class="ver" id="ver"></p>
+
+  <h2>Come si installa</h2>
+  <ol>
+    <li>Tocca <b>Scarica</b> e apri il file quando ha finito.</li>
+    <li>Android chiede di consentire l'installazione da questa fonte (il browser): <b>Impostazioni › Consenti</b>, poi torna indietro e tocca <b>Installa</b>.</li>
+    <li>Apri UniPlanner e scegli il tuo corso. Da lì in poi si aggiorna da sola.</li>
+  </ol>
+
+  <div class="note">
+    <p><b>Play Protect avvisa?</b> Succede con tutte le app che non vengono dal Play Store. Tocca “Altri dettagli › Installa comunque”.</p>
+    <p><b>“App non installata” o conflitto con un pacchetto esistente?</b> Hai una versione di prima del 28 settembre: disinstallala e riprova.</p>
+    <p><a href="https://github.com/LordMarte-A669/uniplanner-releases/releases">Tutte le versioni e le novità</a></p>
+  </div>
+
+  <div class="qr">
+    <img src="qr.svg" alt="QR code di questa pagina">
+    <p>Sei al computer? Inquadra il codice col telefono per aprire questa pagina.</p>
+  </div>
+</main>
+<script>
+  // Versione e data dell'ultima release: se GitHub non risponde la pagina funziona lo stesso.
+  fetch('https://api.github.com/repos/LordMarte-A669/uniplanner-releases/releases/latest')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (rel) {
+      if (!rel || !rel.tag_name) return;
+      var d = new Date(rel.published_at);
+      document.getElementById('ver').textContent = 'Versione ' + rel.tag_name.replace(/^v/, '') +
+        ' · ' + d.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' });
+    })
+    .catch(function () {});
+</script>
+</body>
+</html>

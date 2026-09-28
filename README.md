@@ -1,11 +1,13 @@
-# UniPlanner — aggiornamenti
+# UniPlanner — download e aggiornamenti
 
-Qui ci sono solo gli aggiornamenti "over the air" dell'app UniPlanner: la parte web (`www/`)
-zippata, cifrata e firmata, più un `manifest.json` per versione. Li pubblica in automatico la CI
-del repo dei sorgenti, che è privato. Non si modifica niente a mano.
+**Per installare l'app: <https://lordmarte-a669.github.io/uniplanner-releases/>** (è la pagina del QR code).
 
-- **Non ci sono APK né sorgenti.** L'app installata scarica da qui solo il bundle più recente.
-- **Ogni bundle è firmato.** L'app lo verifica con la chiave pubblica che ha dentro e scarta
-  qualsiasi file non firmato dalla CI, anche se arrivasse da questo repo.
-- `releases/latest/download/manifest.json` descrive l'ultima versione: numero, versione minima
-  dell'APK che serve, URL dello zip, checksum firmato, chiave di sessione.
+Questo repo contiene solo ciò che la CI del repo dei sorgenti (privato) pubblica a ogni versione.
+Non si modifica niente a mano, tranne la pagina di download (`index.html`, `qr.png`, `qr.svg`, `icon.svg`).
+
+- **APK**: `uniplanner-X.Y.Z.apk` e la stessa col nome fisso `uniplanner.apk`, così
+  `releases/latest/download/uniplanner.apk` porta sempre all'ultima.
+- **Aggiornamenti automatici**: la parte web dell'app (`www/`) zippata, cifrata e firmata, più
+  `manifest.json`. L'app installata li scarica da sola e scarta qualsiasi file non firmato dalla CI.
+- `releases/latest/download/manifest.json` descrive l'ultima versione: numero, APK minima
+  richiesta, URL dello zip e dell'APK, checksum firmato, chiave di sessione, novità.
