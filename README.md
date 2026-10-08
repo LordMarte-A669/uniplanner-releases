@@ -1,4 +1,4 @@
-# UniPlanner — download e aggiornamenti
+# Sciamn — download e aggiornamenti
 
 **Per installare l'app: <https://lordmarte-a669.github.io/uniplanner-releases/>** (è la pagina del QR code).
 
