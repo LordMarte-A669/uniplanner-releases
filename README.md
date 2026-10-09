@@ -1,6 +1,6 @@
 # Sciamn — download e aggiornamenti
 
-**Per installare l'app: <https://lordmarte-a669.github.io/uniplanner-releases/>** (è la pagina del QR code).
+**Per installare l'app: <https://lordmarte-a669.github.io/sciamn/>** (è la pagina del QR code).
 
 Questo repo contiene solo ciò che la CI del repo dei sorgenti (privato) pubblica a ogni versione.
 Non si modifica niente a mano: anche la pagina di download (`index.html`, `qr.*`, `icon*`) è generata a ogni versione dalla CI, a partire da `site/` del repo dei sorgenti.
